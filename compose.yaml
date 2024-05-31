@@ -1,0 +1,33 @@
+version: '3.3'
+
+services:
+  app:
+    image: matheusmunari0/app-jar-caretech:1.8
+    restart: always
+    container_name: my-app-container
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_USER=root
+      - DB_PASSWORD=urubu100
+      - DB_NAME=caretech
+    depends_on:
+      - db
+    networks:
+      - caretech-network
+  db:
+    image: matheusmunari0/banco-local-caretech:1.1
+    restart: always
+    container_name: my-db-container
+    ports:
+      - "3306"
+    networks:
+      - caretech-network
+
+
+networks:
+  caretech-network:
+    driver: bridge
+    ipam: 
+      driver: default
+
