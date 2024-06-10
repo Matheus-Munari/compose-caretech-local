@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   app:
-    image: matheusmunari0/app-jar-caretech:1.8
+    image: matheusmunari0/app-jar-caretech:2.3
     restart: always
     container_name: my-app-container
     environment:
@@ -11,6 +11,7 @@ services:
       - DB_USER=root
       - DB_PASSWORD=urubu100
       - DB_NAME=caretech
+      - AMBIENTE=container
     depends_on:
       - db
     networks:
